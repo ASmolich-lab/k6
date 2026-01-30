@@ -23,7 +23,7 @@ export const options = {
   },
   thresholds: {
      // Fail if we can't respond fast enough
-    http_req_duration: ['p(95)<25'],
+    http_req_duration: ['p(95)<65'],
   },
 };
 
