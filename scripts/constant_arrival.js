@@ -32,6 +32,4 @@ export default function () {
   
   check(res, { 'status is 200': (r) => r.status === 200 });
   
-  // NOTE: No sleep() needed here! 
-  // The executor controls the pacing, not the code.
 }

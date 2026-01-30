@@ -43,7 +43,7 @@ export default function (data) {
     lastname: "Brown",
     totalprice: 111,
     depositpaid: true,
-    bookingdates: { checkin: "2023-01-01", checkout: "2023-01-02" },
+    bookingdates: { checkin: "2026-01-01", checkout: "2026-01-05" },
     additionalneeds: "Breakfast"
   });
 
