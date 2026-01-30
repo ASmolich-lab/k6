@@ -1,0 +1,38 @@
+name: k6 Load Test
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  load-test:
+    name: Run k6 Suites
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # 1. Constant Arrival
+      - name: Run Constant Arrival Test
+        uses: grafana/k6-action@v0.3.1
+        with:
+          filename: scripts/constant_arrival.js
+          flags: --verbose
+
+      # 2. Login & Booking
+      - name: Run Login & Booking Test
+        uses: grafana/k6-action@v0.3.1
+        env:
+          API_USER: ${{ secrets.K6_API_USER || 'admin' }}
+          API_PASS: ${{ secrets.K6_API_PASS || 'password123' }}
+        with:
+          filename: scripts/login_booking.js
+          flags: --env API_USER=${API_USER} --env API_PASS=${API_PASS}
+
+      # 3. Custom Metrics
+      - name: Run Custom Metric Test
+        uses: grafana/k6-action@v0.3.1
+        with:
+          filename: scripts/custom_metrics.js
