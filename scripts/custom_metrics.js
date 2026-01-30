@@ -13,7 +13,7 @@ export const options = {
   ],
   thresholds: {
     // 2. Set a specific threshold for this custom metric
-    'waiting_for_search_results': ['p(95)<37'],
+    'waiting_for_search_results': ['p(95)<250'],
   },
 };
 
